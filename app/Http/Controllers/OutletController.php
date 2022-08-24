@@ -61,9 +61,37 @@ class OutletController extends Controller
             $outlet->longitude = $request->latitude;
             $outlet->image = $input['imagename'];
             $outlet->save();
-            return response()->json(['message'=> 'Outlet Stored','product'=> $outlet]);
+            return response()->json(['message'=> 'Outlet Stored','outlet'=> $outlet]);
         }
 
     }
+
+    public function show($id)
+    {
+        $outlet = Outlet::find($id);
+        return response()->json(['outlet' => $outlet]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $outlet = Outlet::find($id);
+        $outlet->name = $request->name;
+        $outlet->phone = $request->phone;
+        $outlet->latitude = $request->latitude;
+        $outlet->longitude = $request->latitude;
+        $outlet->save();
+
+        return response()->json(['message'=> 'Outlet Updated','outlet'=> $outlet]);
+
+    }
+
+    public function destroy($id)
+    {
+        $outlet = Outlet::find($id);
+        $outlet->delete();
+
+        return response()->json(['message'=> 'Outlet Deleted','outlet'=> $outlet]);
+    }
+
 
 }
