@@ -28,4 +28,10 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+
+    Route::get('outlets/outlet-list', [\App\Http\Controllers\OutletController::class, 'index']);
+    Route::post('outlets/store', [\App\Http\Controllers\OutletController::class, 'store']);
+    Route::get('outlets/show/{id}', [\App\Http\Controllers\OutletController::class, 'show']);
+    Route::put('outlets/update/{id}', [\App\Http\Controllers\OutletController::class, 'update']);
+    Route::delete('outlets/delete/{id}', [\App\Http\Controllers\OutletController::class, 'destroy']);
 });
